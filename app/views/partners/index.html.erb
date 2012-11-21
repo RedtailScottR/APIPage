@@ -1,0 +1,29 @@
+<h1>List of Partners</h1>
+<div class="form-vertical well">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @partners.each do |partner| %>
+  <tr>
+    <td><%= partner.name %></td>
+    <td><%= partner.email %></td>
+    <td><%= partner.company %></td>
+    <td><%= partner.url %></td>
+    <td><%= link_to 'Show', partner %></td>
+    <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
+    <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+
+<%= link_to 'New Partner', new_partner_path %>

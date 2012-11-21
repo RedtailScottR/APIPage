@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+  <div class="row">
+
+    <div class="span5">
+      <div class="well">
+
+
+
+        
+<p>
+  <b>Name:</b>
+  <%= @partner.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @partner.email %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @partner.company %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @partner.url %>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<%= link_to 'Edit', edit_partner_path(@partner) %> |
+<%= link_to 'Back', partners_path %>
+
