@@ -32,6 +32,7 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.4.0)
     builder (3.0.3)
     capybara (1.1.2)
@@ -55,6 +56,8 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.1.5)
+    highcharts-rails (2.3.5)
+      railties (>= 3.1)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -145,9 +148,11 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.5.0)
+  bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.0.4)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
+  highcharts-rails (~> 2.3.0)
   jquery-rails (= 2.0.2)
   mysql2
   pg (= 0.12.2)

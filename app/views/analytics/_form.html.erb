@@ -1,0 +1,45 @@
+<%= form_for(@analytic) do |f| %>
+  <% if @analytic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@analytic.errors.count, "error") %> prohibited this analytic from being saved:</h2>
+
+      <ul>
+      <% @analytic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :MachineName %><br />
+    <%= f.text_field :MachineName %>
+  </div>
+  <div class="field">
+    <%= f.label :APIKey %><br />
+    <%= f.text_field :APIKey %>
+  </div>
+  <div class="field">
+    <%= f.label :UserID %><br />
+    <%= f.text_field :UserID %>
+  </div>
+  <div class="field">
+    <%= f.label :method %><br />
+    <%= f.text_field :method %>
+  </div>
+  <div class="field">
+    <%= f.label :method_time %><br />
+    <%= f.number_field :method_time %>
+  </div>
+  <div class="field">
+    <%= f.label :method_success %><br />
+    <%= f.check_box :method_success %>
+  </div>
+  <div class="field">
+    <%= f.label :recadd %><br />
+    <%= f.datetime_select :recadd %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

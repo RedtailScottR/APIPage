@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b> machinename:</b>
+  <%= @analytic.MachineName %>
+</p>
+
+<p>
+  <b>Apikey:</b>
+  6C135EDF-C37C-4039-AEF3-5DFC079F9E6A
+</p>
+
+<p>
+  <b>Userid:</b>
+  <%= @analytic.UserID %>
+</p>
+
+<p>
+  <b>Method:</b>
+  <%= @analytic.method %>
+</p>
+
+<p>
+  <b>Method time:</b>
+  <%= @analytic.method_time %>
+</p>
+
+<p>
+  <b>Method success:</b>
+  <%= @analytic.method_success %>
+</p>
+
+<p>
+  <b>Recadd:</b>
+  <%= @analytic.recadd %>
+</p>
+
+
+<%= link_to 'Edit', edit_analytic_path(@analytic) %> |
+<%= link_to 'Back', analytics_path %>

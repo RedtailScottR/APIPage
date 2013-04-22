@@ -1,6 +1,7 @@
 <h1>List of Partners</h1>
 <div class="form-vertical well">
-<table>
+<table class="table table-bordered table-striped table-hover">
+<thead>
   <tr>
     <th>Name</th>
     <th>Email</th>
@@ -10,7 +11,7 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
 <% @partners.each do |partner| %>
   <tr>
     <td><%= partner.name %></td>

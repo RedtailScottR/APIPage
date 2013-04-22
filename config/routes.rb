@@ -1,14 +1,18 @@
 Apipage::Application.routes.draw do
-  resources :partners
+  resources :analytics
 
-  get "users/new"
+  resources :partners
+  resources :users
+
 
   root to: 'static_pages#home'
 
+  match '/reg', to: 'users#new'
   match '/signup',  to: 'partners#new'
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/demo', to: 'analytics#demo'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

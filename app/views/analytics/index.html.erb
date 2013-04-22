@@ -1,0 +1,151 @@
+<h1>Performance & Usage Metrics</h1>
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+
+    	// Radialize the colors
+		Highcharts.setOptions(Highcharts.theme);
+		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+		    return {
+		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+		        stops: [
+		            [0, color],
+		            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+		        ]
+		    };
+		});
+
+        new Highcharts.Chart({
+            chart: {
+              renderTo: "hero",
+		 plotBackgroundColor: null,
+               plotBorderWidth: null,
+               plotShadow: false,
+		 type: 'pie'
+            },
+              title: {
+                text: "Method Usage" 
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+		  type: 'pie',
+                name: 'Method Usage',
+                data: [['Contact_Master_Fetch', <%= @metric %>],
+             		  ['Activity_byUser_BasicPaged_Fetch', <%= @metric1 %>],
+		         ['Users_ShortName_Fetch', <%= @metric2 %>],
+                       ['Authenticate', <%= @metric3 %>],
+			  ['User_Preference_Calendar', <%= @metric4 %>],
+			  ['Other Methods', <%= @metric5 %>]
+			 ]
+
+		
+            }]
+        })
+
+                
+  });
+$(function(){
+    
+              new Highcharts.Chart({
+            chart: {
+              renderTo: "hero2",
+		type: 'bar'
+            },
+              title: {
+                text: "API Performance" 
+            },
+            xAxis: {
+                categories: ['ContactName_ByName', 'Activity_byUser_Basic', 'ContactName_ByLetter', 'Contact_Master_Fetch', 'Activity_byActivityID_Fetch']
+            },
+            yAxis: {
+                title: {
+                text: "MethodTime"
+                },
+               stackLabels: {
+                    enabled: true,
+                    style: {
+                        fontWeight: 'bold',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    }
+                }
+            },
+ 
+ 	     plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: true,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                    }
+                }
+            },
+            series: [{
+                name: 'Max',
+                data: [<%= Analytic.totalc_where("RESTAPI.CRMv1.ContactName_ByName_Paged_Fetch")%>, <%= Analytic.totalc_where("Activity_byUser_BasicPaged_Fetch")%>, <%= Analytic.totalc_where("RESTAPI.CRMv1.MasterCategory_ById_Fetch")%>, <%= Analytic.totalc_where("RESTAPI.CRMv1.MasterCategory_ById_Fetch")%>, <%= Analytic.totalc_where("RESTAPI.CRMv1.MasterCategory_ById_Fetch")%>],
+		  stack: 'test'
+            }, {
+                name: 'AVG',
+                data: [32, 50, 37, 45, 60],
+		  stack: 'test'
+            }, {
+                name: 'Min',
+                data: [20, 20, 20, 20, 20],
+ 	         stack: 'test'
+            }]
+        })
+                
+  });
+ 
+
+
+</script>
+<br><br>
+<div id="hero">
+</div><br><br><br><br>
+<div id="hero2">
+</div><br><br><br><br>
+
+<table class="table table-bordered table-striped table-hover">
+<thead>
+  <tr>
+    <th>Machine</th>
+    <th>Apikey</th>
+    <th>Userid</th>
+    <th>Method</th>
+    <th>Method time</th>
+    <th>Method success</th>
+    <th>Recadd</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<% @analytics.each do |analytic| %>
+  <tr>
+    <td><%= analytic. MachineName %></td>
+    <td>6C135EDF-C37C-4039-AEF3-5DFC079F9E6A</td>
+    <td><%= analytic.UserID %></td>
+    <td><%= analytic.method %></td>
+    <td><%= analytic.method_time %></td>
+    <td><%= analytic.method_success %></td>
+    <td><%= analytic.recadd %></td>
+    <td><%= link_to 'Show', analytic %></td>
+    <td><%= link_to 'Destroy', analytic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Analytic', new_analytic_path %>

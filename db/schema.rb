@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119131014) do
+ActiveRecord::Schema.define(:version => 20130303052457) do
+
+  create_table "analytics", :force => true do |t|
+    t.string   "MachineName"
+    t.string   "APIKey"
+    t.string   "UserID"
+    t.string   "method"
+    t.integer  "method_time"
+    t.boolean  "method_success"
+    t.datetime "recadd"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "partners", :force => true do |t|
     t.string   "name"
@@ -25,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20121119131014) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
   end
 
 end

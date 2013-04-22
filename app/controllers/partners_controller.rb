@@ -44,6 +44,7 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
+	
         format.html { redirect_to @partner, notice: 'Partner was successfully created.' }
         format.json { render json: @partner, status: :created, location: @partner }
       else

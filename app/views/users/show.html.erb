@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+  <div class="row">
+
+    <div class="span5">
+      <div class="well">
+
+
+
+        
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <b>updated:</b>
+  <%= @user.updated_at %>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
